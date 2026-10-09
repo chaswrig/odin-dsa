@@ -28,6 +28,40 @@ class LinkedList {
     this.length++;
   }
 
+  insertAt(index, ...values) {
+    //Should insert new nodes with the given values at index.
+    //If index exceeds list length throw a RangeError
+    if (index < 0 || index >= this.length) {
+      throw new RangeError("Index out of bounds");
+    }
+
+    values.forEach((value) => {
+      let newNode = new Node();
+      newNode.setValue(value);
+      const indexNode = this.atIndex(index);
+      newNode.setNextNode(indexNode);
+      if (index > 0) {
+        const previousNode = this.atIndex(index - 1);
+        previousNode.setNextNode(newNode);
+      }
+      index++;
+      this.length++;
+    });
+  }
+
+  removeAt(index) {
+    // Removes the node at the given index.
+    // If the given index is out of bounds throw a RangeError
+    if (index < 0 || index >= this.length) {
+      throw new RangeError("Index out of bounds.");
+    }
+
+    const previousNode = this.atIndex(index - 1);
+    const nodeToRemove = previousNode.getNextNode();
+    previousNode.setNextNode(nodeToRemove.getNextNode());
+    this.length--;
+  }
+
   size() {
     let count = 0;
     let current = this.head;
@@ -95,7 +129,7 @@ class LinkedList {
 
   atIndex(index) {
     if (index < 0 || index >= this.length) {
-      return undefined;
+      throw new RangeError("Index out of bounds.");
     }
     let current = this.head;
     let currentIndex = 0;

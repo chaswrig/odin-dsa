@@ -1,15 +1,7 @@
 //Run DSA projects from here
 "use strict";
 
-import { LinkedList } from "./linkedlist.js";
+import { HashMap } from "./hashmap.js";
 
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-console.log(list.toString());
+const hashmap = new HashMap(0.75, 16);
+console.log(hashmap);
