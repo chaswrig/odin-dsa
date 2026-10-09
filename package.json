@@ -1,0 +1,26 @@
+{
+  "name": "odin-dsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaswrig/odin-dsa.git"
+  },
+  "keywords": [],
+  "author": "chaswrig <42904530+chaswrig@users.noreply.github.com>",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/chaswrig/odin-dsa/issues"
+  },
+  "homepage": "https://github.com/chaswrig/odin-dsa#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0"
+  }
+}
