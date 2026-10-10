@@ -9,9 +9,11 @@ class LinkedList {
     this.length = 0;
   }
 
-  append(value) {
+  append(value, key = null) {
+    //optionial keys for hashmap project
     const newNode = new Node();
     newNode.setValue(value);
+    newNode.setKey(key); //ugly, roll with it
     const previousTail = this.tail();
     if (previousTail) {
       previousTail.setNextNode(newNode);
@@ -55,11 +57,15 @@ class LinkedList {
     if (index < 0 || index >= this.length) {
       throw new RangeError("Index out of bounds.");
     }
-
-    const previousNode = this.atIndex(index - 1);
-    const nodeToRemove = previousNode.getNextNode();
-    previousNode.setNextNode(nodeToRemove.getNextNode());
-    this.length--;
+    if (index > 0) {
+      const previousNode = this.atIndex(index - 1);
+      const nodeToRemove = previousNode.getNextNode();
+      previousNode.setNextNode(nodeToRemove.getNextNode());
+      this.length--;
+      console.log("removed from linked list");
+    } else {
+      this.pop();
+    }
   }
 
   size() {
@@ -92,7 +98,7 @@ class LinkedList {
 
   pop() {
     if (this.head === null) {
-      return undefined;
+      return null;
     }
     const head = this.head;
     this.head = this.head.getNextNode();
@@ -112,6 +118,19 @@ class LinkedList {
         current = current.getNextNode();
       }
     }
+  }
+
+  findKey(key) {
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      if (current.getKey() === key) {
+        return index;
+      }
+      current = current.getNextNode();
+      index++;
+    }
+    return -1;
   }
 
   findIndex(value) {
